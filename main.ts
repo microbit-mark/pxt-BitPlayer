@@ -65,11 +65,14 @@ namespace BitPlayer {
     let joystick_X = AnalogPin.P1;
     let joystick_Y = AnalogPin.P2;
 
+    function init(): void {
+        return;
+    }
 
     //Initialize the pins of the push buttons 
     function PinInit(): void {
         pins.setPull(DigitalPin.P5, PinPullMode.PullNone);
-        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
+        pins.setPull(DigitalPin.P11, PinPullMode.PullNone);
         pins.setPull(DigitalPin.P13, PinPullMode.PullNone);
         pins.setPull(DigitalPin.P14, PinPullMode.PullNone);
         pins.setPull(DigitalPin.P15, PinPullMode.PullNone);
@@ -84,6 +87,7 @@ namespace BitPlayer {
     //% blockId=OnButton
     //% block="on key $key| is $keyEvent"
     export function OnButton(key: Key, keyEvent: KeyEvent, handler: Action) {
+        init();
         //Initialize the pins if it's not initialized
         if (!pin_init) {
             PinInit();
