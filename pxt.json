@@ -8,6 +8,7 @@
     },
     "files": [
         "README.md",
+        "bitplayer.cpp",
         "main.ts"
     ],
     "testFiles": [
