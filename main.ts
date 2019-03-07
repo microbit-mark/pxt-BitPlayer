@@ -5,7 +5,7 @@
 ******************************************************************************/
 
 enum Joystick {
-    //% block="Left"
+    //% block="【←】Left"
     Up,
     //% block="Right"
     P1,
@@ -13,7 +13,7 @@ enum Joystick {
     P2,
     //% block="Down"
     P8,
-    //% block="↑↓← →↖↗↙↘"
+    //% block="【youshang右上】↑↓← →↖↗↙↘"
     P16,
 }
 
