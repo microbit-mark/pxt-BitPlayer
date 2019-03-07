@@ -5,16 +5,22 @@
 ******************************************************************************/
 
 enum Joystick {
-    //% block="Left"
+    //% block=" ← Left"
+    Left,
+    //% block=" → Right"
+    Right,
+    //% block=" ↑ Up"
     Up,
-    //% block="Right"
-    P1,
-    //% block="Up"
-    P2,
-    //% block="Down"
-    P8,
-    //% block="↑↓← →↖↗↙↘"
-    P16,
+    //% block=" ↓ Down"
+    Down,
+    //% block=" ↖ UpLeft"
+    UpLeft,
+    //% block=" ↗ UpRight"
+    UpRight,
+    //% block=" ↙ LowerLeft"
+    LowerLeft,
+    //% block=" ↘ LowerRight"
+    LowerRight
 }
 
 enum AnalogPort {
