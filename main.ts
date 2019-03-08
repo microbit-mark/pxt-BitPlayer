@@ -84,11 +84,11 @@ namespace BitPlayer {
     }
 
     /**
-    * Determines if a key is pressed
+    * Get the key state (pressed or not)
     * @param key the pin that acts as a button
     */
     //% blockId=KeyPressed
-    //% block="key $button is pressed"
+    //% block="key $key| is pressed"
     export function KeyPressed(key: BitPlayerKey): boolean {
         const pin = <DigitalPin><number>key;
         pins.setPull(pin, PinPullMode.PullUp);
