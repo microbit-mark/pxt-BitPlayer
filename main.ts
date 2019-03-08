@@ -73,17 +73,6 @@ namespace BitPlayer {
         return;
     }
 
-    //Initialize the pins of the push buttons 
-    function PinInit(): void {
-        pins.setPull(DigitalPin.P5, PinPullMode.PullNone);
-        pins.setPull(DigitalPin.P11, PinPullMode.PullNone);
-        pins.setPull(DigitalPin.P13, PinPullMode.PullNone);
-        pins.setPull(DigitalPin.P14, PinPullMode.PullNone);
-        pins.setPull(DigitalPin.P15, PinPullMode.PullNone);
-        pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
-        pin_init = 1;
-        return;
-    }
 
     /**
      * Do something when a key is pressed, releassed or clicked
@@ -92,10 +81,6 @@ namespace BitPlayer {
     //% block="on key $key| is $keyEvent"
     export function OnButton(key: BitPlayerKey, keyEvent: BitPlayerKeyEvent, handler: Action) {
         init();
-        //Initialize the pins if it's not initialized
-        if (!pin_init) {
-            PinInit();
-        }
         control.onEvent(<number>key, <number>keyEvent, handler); // register handler
     }
 }
