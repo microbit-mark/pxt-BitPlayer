@@ -25,7 +25,7 @@ enum Joystick {
     LowerRight
 }
 
-enum Key {
+enum BitPlayerKey {
     //% block="A"
     key_A = <number>DAL.MICROBIT_ID_IO_P5,
     //% block="B"
@@ -37,20 +37,20 @@ enum Key {
     //% block="L"
     key_L = <number>DAL.MICROBIT_ID_IO_P15,
     //% block="R"
-    key_R = <number>DAL.MICROBIT_ID_IO_P16
+    key_R = <number>DAL.MICROBIT_ID_IO_P16,
 }
 
 /**
  * Button Events of BitPlayer
  */
 //%
-enum KeyEvent {
+enum BitPlayerKeyEvent {
     //% block="click"
     click = DAL.MICROBIT_BUTTON_EVT_CLICK,
     //% block="pressed"
     pressed = DAL.MICROBIT_BUTTON_EVT_DOWN,
     //% block="released"
-    released = DAL.MICROBIT_BUTTON_EVT_UP
+    released = DAL.MICROBIT_BUTTON_EVT_UP,
 }
 
 
@@ -65,6 +65,10 @@ namespace BitPlayer {
     let joystick_X = AnalogPin.P1;
     let joystick_Y = AnalogPin.P2;
 
+	/**
+	 * 
+	 */
+    //% shim=bitplayer::init
     function init(): void {
         return;
     }
@@ -86,7 +90,7 @@ namespace BitPlayer {
      */
     //% blockId=OnButton
     //% block="on key $key| is $keyEvent"
-    export function OnButton(key: Key, keyEvent: KeyEvent, handler: Action) {
+    export function OnButton(key: BitPlayerKey, keyEvent: BitPlayerKeyEvent, handler: Action) {
         init();
         //Initialize the pins if it's not initialized
         if (!pin_init) {
