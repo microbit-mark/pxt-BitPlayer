@@ -73,14 +73,25 @@ namespace BitPlayer {
         return;
     }
 
-
     /**
      * Do something when a key is pressed, releassed or clicked
      */
-    //% blockId=OnButton
+    //% blockId=OnKey
     //% block="on key $key| is $keyEvent"
-    export function OnButton(key: BitPlayerKey, keyEvent: BitPlayerKeyEvent, handler: Action) {
+    export function OnKey(key: BitPlayerKey, keyEvent: BitPlayerKeyEvent, handler: Action) {
         init();
         control.onEvent(<number>key, <number>keyEvent, handler); // register handler
+    }
+
+    /**
+    * Determines if a key is pressed
+    * @param key the pin that acts as a button
+    */
+    //% blockId=KeyPressed
+    //% block="key $button is pressed"
+    export function KeyPressed(key: BitPlayerKey): boolean {
+        const pin = <DigitalPin><number>key;
+        pins.setPull(pin, PinPullMode.PullUp);
+        return pins.digitalReadPin(<DigitalPin><number>key) == 0;
     }
 }
