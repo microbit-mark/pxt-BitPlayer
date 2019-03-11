@@ -78,7 +78,7 @@ namespace BitPlayer {
     //% block="joystick $position|"
     //% position.fieldEditor="gridpicker"
     //% position.fieldOptions.columns=3
-    export function OnJoystick(position: Joystick): boolean {
+    export function OnJoystick(position: Joystick): number {
         let x = pins.analogReadPin(AnalogPin.P1) - x0;
         let y = pins.analogReadPin(AnalogPin.P2) - y0;
         let d = Math.sqrt(Math.abs(x * x) + Math.abs(y * y));
@@ -126,9 +126,9 @@ namespace BitPlayer {
         }
 
         if (getPosition = position) {
-            return true;
+            return x;
         } else {
-            return false;
+            return x;
         }
     }
 
