@@ -60,10 +60,52 @@ enum BitPlayerKeyEvent {
 //% color=190 icon="\uf126" block= "BitPlayer"
 //% groups="['Analog', 'Digital', 'I2C', 'Grove Modules']"
 namespace BitPlayer {
-    let pin_init: number = 0;
+    let posi_init = 0;
+    const x0 = 500;
+    const y0 = 500;
+    const d0 = 250;
 
-    let joystick_X = AnalogPin.P1;
-    let joystick_Y = AnalogPin.P2;
+    function InitialPosition(): void {
+        posi_init = 1;
+        return;
+    }
+
+    /**
+    * Get the joystick state
+    * @param position the current position of joystick
+    */
+    //% blockId=OnJoystick
+    //% block="joystick $position| is pressed"
+    //% dir.fieldEditor="gridpicker"
+    //% dir.fieldOptions.columns=3
+    export function OnJoystick(position: Joystick): boolean {
+        let x = pins.analogReadPin(AnalogPin.P1) - x0;
+        let y = pins.analogReadPin(AnalogPin.P2) - y0;
+        let d = Math.sqrt(Math.abs(x * x) + Math.abs(y * y));
+        let getPosition = Joystick.Middle;
+
+        if (d > d0) {
+            if (x > 0 || y > 0) {               // (x,y) is at top right area
+
+            } else if (x > 0 || y < 0) {        // (x,y) is at bot right area
+
+            } else if (x < 0 || y < 0) {         // (x,y) is at bot left area
+
+            } else if (x < 0 || y > 0) {         // (x,y) is at top left area
+
+            }
+        } else {
+            getPosition = Joystick.Middle;
+        }
+
+        if (getPosition = position) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 
 	/**
 	 * 
@@ -79,6 +121,10 @@ namespace BitPlayer {
     //% blockId=OnKey
     //% block="on key $key| is $keyEvent"
     export function OnKey(key: BitPlayerKey, keyEvent: BitPlayerKeyEvent, handler: Action) {
+        if (!posi_init) {
+            InitialPosition();
+        }
+
         init();
         control.onEvent(<number>key, <number>keyEvent, handler); // register handler
     }
@@ -90,6 +136,10 @@ namespace BitPlayer {
     //% blockId=KeyPressed
     //% block="key $key| is pressed"
     export function KeyPressed(key: BitPlayerKey): boolean {
+        if (!posi_init) {
+            InitialPosition();
+        }
+
         const pin = <DigitalPin><number>key;
         pins.setPull(pin, PinPullMode.PullUp);
         return pins.digitalReadPin(<DigitalPin><number>key) == 0;
