@@ -125,7 +125,7 @@ namespace BitPlayer {
             getPosition = Joystick.Middle;
         }
 
-        if (getPosition = position) {
+        if (getPosition == position) {
             return true;
         } else {
             return false;
