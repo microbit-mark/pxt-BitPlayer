@@ -76,8 +76,8 @@ namespace BitPlayer {
     */
     //% blockId=OnJoystick
     //% block="joystick $position| is pressed"
-    //% dir.fieldEditor="gridpicker"
-    //% dir.fieldOptions.columns=3
+    //% position.fieldEditor="gridpicker"
+    //% position.fieldOptions.columns=3
     export function OnJoystick(position: Joystick): boolean {
         let x = pins.analogReadPin(AnalogPin.P1) - x0;
         let y = pins.analogReadPin(AnalogPin.P2) - y0;
