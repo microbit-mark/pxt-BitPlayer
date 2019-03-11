@@ -78,12 +78,12 @@ namespace BitPlayer {
     //% block="joystick $position|"
     //% position.fieldEditor="gridpicker"
     //% position.fieldOptions.columns=3
-    export function OnJoystick(position: Joystick): number {
+    export function OnJoystick(position: Joystick): boolean {
         let x = pins.analogReadPin(AnalogPin.P1) - x0;
         let y = pins.analogReadPin(AnalogPin.P2) - y0;
-        let d = Math.sqrt(Math.abs(x * x) + Math.abs(y * y));
-        const value1 = d * 0.38;        //0.38 is the value of sin 22.5°
-        const value2 = d * 0.92;        //0.92 is the value of sin 67.5°
+        let d = Math.round(Math.sqrt(Math.abs(x * x) + Math.abs(y * y)));
+        const value1 = Math.round(d * 0.38);        //0.38 is the value of sin 22.5°
+        const value2 = Math.round(d * 0.92);        //0.92 is the value of sin 67.5°
         let getPosition = Joystick.Middle;
 
         if (d > d0) {
@@ -126,9 +126,9 @@ namespace BitPlayer {
         }
 
         if (getPosition = position) {
-            return d;
+            return true;
         } else {
-            return d;
+            return false;
         }
     }
 
