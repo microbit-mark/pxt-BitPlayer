@@ -61,14 +61,69 @@ enum BitPlayerKeyEvent {
 //% groups="['Analog', 'Digital', 'I2C', 'Grove Modules']"
 namespace BitPlayer {
     let posi_init = 0;
-    const x0 = 500;
-    const y0 = 500;
-    const d0 = 250;
 
     function InitialPosition(): void {
         posi_init = 1;
         return;
     }
+
+	/**
+	 * 
+	 */
+    //% shim=bitplayer::init
+    function init(): void {
+        return;
+    }
+
+    /**
+     * Do something when a key is pressed, releassed or clicked
+     */
+    //% blockId=OnKey
+    //% block="on key $key| is $keyEvent"
+    export function OnKey(key: BitPlayerKey, keyEvent: BitPlayerKeyEvent, handler: Action) {
+        if (!posi_init) {
+            InitialPosition();
+        }
+
+        init();
+        control.onEvent(<number>key, <number>keyEvent, handler); // register handler
+    }
+
+    /**
+    * Get the key state (pressed or not)
+    * @param key the pin that acts as a button
+    */
+    //% blockId=KeyPressed
+    //% block="key $key| is pressed"
+    export function KeyPressed(key: BitPlayerKey): boolean {
+        if (!posi_init) {
+            InitialPosition();
+        }
+
+        const pin = <DigitalPin><number>key;
+        pins.setPull(pin, PinPullMode.PullUp);
+        return pins.digitalReadPin(<DigitalPin><number>key) == 0;
+    }
+
+    /**
+    * turn on of off the vibration motor
+    */
+    //% blockId=SetMotor
+    //% block="motor $on|"
+    //% on.shadow="toggleOnOff"
+    //% on.defl="true"
+    //% weight=45
+    export function SetMotor(on: boolean) {
+        if (on) {
+            pins.digitalWritePin(DigitalPin.P8, 1);
+        }else{
+            pins.digitalWritePin(DigitalPin.P8, 0);
+        }
+    }
+
+    const x0 = 500;
+    const y0 = 500;
+    const d0 = 250;
 
     /**
     * Get the joystick state
@@ -78,6 +133,7 @@ namespace BitPlayer {
     //% block="joystick $position|"
     //% position.fieldEditor="gridpicker"
     //% position.fieldOptions.columns=3
+    //%weight = 40
     export function OnJoystick(position: Joystick): boolean {
         let x = pins.analogReadPin(AnalogPin.P1) - x0;
         let y = pins.analogReadPin(AnalogPin.P2) - y0;
@@ -130,45 +186,5 @@ namespace BitPlayer {
         } else {
             return false;
         }
-    }
-
-
-
-	/**
-	 * 
-	 */
-    //% shim=bitplayer::init
-    function init(): void {
-        return;
-    }
-
-    /**
-     * Do something when a key is pressed, releassed or clicked
-     */
-    //% blockId=OnKey
-    //% block="on key $key| is $keyEvent"
-    export function OnKey(key: BitPlayerKey, keyEvent: BitPlayerKeyEvent, handler: Action) {
-        if (!posi_init) {
-            InitialPosition();
-        }
-
-        init();
-        control.onEvent(<number>key, <number>keyEvent, handler); // register handler
-    }
-
-    /**
-    * Get the key state (pressed or not)
-    * @param key the pin that acts as a button
-    */
-    //% blockId=KeyPressed
-    //% block="key $key| is pressed"
-    export function KeyPressed(key: BitPlayerKey): boolean {
-        if (!posi_init) {
-            InitialPosition();
-        }
-
-        const pin = <DigitalPin><number>key;
-        pins.setPull(pin, PinPullMode.PullUp);
-        return pins.digitalReadPin(<DigitalPin><number>key) == 0;
     }
 }
