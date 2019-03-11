@@ -126,9 +126,9 @@ namespace BitPlayer {
         }
 
         if (getPosition = position) {
-            return x;
+            return d;
         } else {
-            return x;
+            return d;
         }
     }
 
