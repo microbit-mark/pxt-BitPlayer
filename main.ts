@@ -87,7 +87,7 @@ namespace BitPlayer {
         let getPosition = Joystick.Middle;
 
         if (d > d0) {
-            if (x > 0 || y > 0) {               // (x,y) is at top right area
+            if (x > 0 && y > 0) {               // (x,y) is at top right area
                 if (y > value2) {
                     getPosition = Joystick.Up;
                 } else if (y < value1) {
@@ -95,7 +95,7 @@ namespace BitPlayer {
                 } else {
                     getPosition = Joystick.UpRight;
                 }
-            } else if (x > 0 || y < 0) {        // (x,y) is at bot right area
+            } else if (x > 0 && y < 0) {        // (x,y) is at bot right area
                 if (x > value2) {
                     getPosition = Joystick.Right;
                 } else if (x < value1) {
@@ -103,7 +103,7 @@ namespace BitPlayer {
                 } else {
                     getPosition = Joystick.LowerRight;
                 }
-            } else if (x < 0 || y < 0) {         // (x,y) is at bot left area
+            } else if (x < 0 && y < 0) {         // (x,y) is at bot left area
                 y = Math.abs(y);
                 if (y > value2) {
                     getPosition = Joystick.Down;
@@ -112,7 +112,7 @@ namespace BitPlayer {
                 } else {
                     getPosition = Joystick.LowerLeft;
                 }
-            } else if (x < 0 || y > 0) {         // (x,y) is at top left area
+            } else if (x < 0 && y > 0) {         // (x,y) is at top left area
                 if (y > value2) {
                     getPosition = Joystick.Up;
                 } else if (y < value1) {
@@ -125,7 +125,7 @@ namespace BitPlayer {
             getPosition = Joystick.Middle;
         }
 
-        if (getPosition = position) {
+        if (getPosition == position) {
             return true;
         } else {
             return false;
