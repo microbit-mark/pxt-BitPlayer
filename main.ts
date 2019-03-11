@@ -82,17 +82,44 @@ namespace BitPlayer {
         let x = pins.analogReadPin(AnalogPin.P1) - x0;
         let y = pins.analogReadPin(AnalogPin.P2) - y0;
         let d = Math.sqrt(Math.abs(x * x) + Math.abs(y * y));
+        const value1 = d * 0.38;        //0.38 is the value of sin 22.5°
+        const value2 = d * 0.92;        //0.92 is the value of sin 67.5°
         let getPosition = Joystick.Middle;
 
         if (d > d0) {
             if (x > 0 || y > 0) {               // (x,y) is at top right area
-
+                if (y > value2) {
+                    getPosition = Joystick.Up;
+                } else if (y < value1) {
+                    getPosition = Joystick.Right;
+                } else {
+                    getPosition = Joystick.UpRight;
+                }
             } else if (x > 0 || y < 0) {        // (x,y) is at bot right area
-
+                if (x > value2) {
+                    getPosition = Joystick.Right;
+                } else if (x < value1) {
+                    getPosition = Joystick.Down;
+                } else {
+                    getPosition = Joystick.LowerRight;
+                }
             } else if (x < 0 || y < 0) {         // (x,y) is at bot left area
-
+                y = Math.abs(y);
+                if (y > value2) {
+                    getPosition = Joystick.Down;
+                } else if (y < value1) {
+                    getPosition = Joystick.Left;
+                } else {
+                    getPosition = Joystick.LowerLeft;
+                }
             } else if (x < 0 || y > 0) {         // (x,y) is at top left area
-
+                if (y > value2) {
+                    getPosition = Joystick.Up;
+                } else if (y < value1) {
+                    getPosition = Joystick.Left;
+                } else {
+                    getPosition = Joystick.UpLeft;
+                }
             }
         } else {
             getPosition = Joystick.Middle;
