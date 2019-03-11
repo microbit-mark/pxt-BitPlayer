@@ -5,23 +5,23 @@
 ******************************************************************************/
 
 enum Joystick {
-    //% block=" ↖ UpLeft"
+    //% block=" UpLeft"
     UpLeft,
     //% block=" ↑ Up"
     Up,
-    //% block=" ↗ UpRight"
+    //% block=" UpRight"
     UpRight,
     //% block=" ← Left"
     Left,
-    //% block=" ○ Middle"
+    //% block=" Middle"
     Middle,
     //% block=" → Right"
     Right,
-    //% block=" ↙ LowerLeft"
+    //% block=" LowerLeft"
     LowerLeft,
     //% block=" ↓ Down"
     Down,
-    //% block=" ↘ LowerRight"
+    //% block=" LowerRight"
     LowerRight
 }
 
