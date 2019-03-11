@@ -75,7 +75,7 @@ namespace BitPlayer {
     * @param position the current position of joystick
     */
     //% blockId=OnJoystick
-    //% block="joystick $position| is pressed"
+    //% block="joystick $position|"
     //% position.fieldEditor="gridpicker"
     //% position.fieldOptions.columns=3
     export function OnJoystick(position: Joystick): boolean {
