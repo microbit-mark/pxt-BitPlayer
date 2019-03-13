@@ -1,5 +1,5 @@
 {
-    "name": "pxt-bitplayer",
+    "name": "bitplayer",
     "version": "0.0.0",
     "description": "",
     "dependencies": {
@@ -9,7 +9,7 @@
     "files": [
         "README.md",
         "bitplayer.cpp",
-        "main.ts"
+        "bitplayer.ts"
     ],
     "testFiles": [
         "test.ts"
