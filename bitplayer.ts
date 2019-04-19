@@ -109,7 +109,7 @@ namespace BitPlayer {
     * turn on of off the vibration motor
     */
     //% blockId=SetMotor
-    //% block="motor $on|"
+    //% block="vibration $on|"
     //% on.shadow="toggleOnOff"
     //% on.defl="true"
     //% weight=45
