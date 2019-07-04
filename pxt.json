@@ -9,7 +9,8 @@
     "files": [
         "README.md",
         "bitplayer.cpp",
-        "bitplayer.ts"
+        "bitplayer.ts",
+        "_locales/zh/bitplayer-strings.json"
     ],
     "testFiles": [
         "test.ts"
