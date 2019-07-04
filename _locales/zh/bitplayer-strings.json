@@ -1,12 +1,12 @@
 {
     "Joystick.UpLeft|block": "左上",
-    "Joystick.Up|block": "上",
+    "Joystick.Up|block": "↑ 上",
     "Joystick.UpRight|block": "右上",
-    "Joystick.Left|block": "左",
+    "Joystick.Left|block": "← 左",
     "Joystick.Middle|block": "中间",
-    "Joystick.Right|block": "右",
+    "Joystick.Right|block": "→ 右",
     "Joystick.LowerLeft|block": "左下",
-    "Joystick.Down|block": "下",
+    "Joystick.Down|block": "↓ 下",
     "Joystick.LowerRight|block": "右下",
 
     "BitPlayerKeyEvent.click|block": "单击",
