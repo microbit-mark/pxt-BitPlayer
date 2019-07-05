@@ -11,7 +11,8 @@
         "README.md",
         "bitplayer.cpp",
         "bitplayer.ts",
-        "_locales/zh/bitplayer-strings.json"
+        "_locales/zh/bitplayer-strings.json",
+        "_locales/zh/bitplayer-jsdoc-strings.json"
     ],
     "testFiles": [
         "test.ts"
