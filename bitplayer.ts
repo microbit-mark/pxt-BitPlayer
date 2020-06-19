@@ -27,17 +27,17 @@ enum Joystick {
 
 enum BitPlayerKey {
     //% block="A"
-    key_A = <number>DAL.MICROBIT_ID_IO_P5,
+    key_A = DAL.MICROBIT_ID_IO_P5,
     //% block="B"
-    key_B = <number>DAL.MICROBIT_ID_IO_P11,
+    key_B = DAL.MICROBIT_ID_IO_P11,
     //% block="C"
-    key_C = <number>DAL.MICROBIT_ID_IO_P13,
+    key_C = DAL.MICROBIT_ID_IO_P13,
     //% block="D"
-    key_D = <number>DAL.MICROBIT_ID_IO_P14,
+    key_D = DAL.MICROBIT_ID_IO_P14,
     //% block="L"
-    key_L = <number>DAL.MICROBIT_ID_IO_P15,
+    key_L = DAL.MICROBIT_ID_IO_P15,
     //% block="R"
-    key_R = <number>DAL.MICROBIT_ID_IO_P16,
+    key_R = DAL.MICROBIT_ID_IO_P16,
 }
 
 /**
