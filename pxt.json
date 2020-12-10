@@ -20,8 +20,5 @@
     "public": true,
     "supportedTargets": [
         "microbit"
-    ],
-    "disablesVariants": [
-        "mbcodal"
-     ]
+    ]
 }
